@@ -7,13 +7,20 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:content": "tsx -r dotenv/config src/scripts/build"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.24.0",
-    "astro": "^4.8.6",
-    "sharp": "^0.32.5",
+    "@ai-sdk/anthropic": "^0.0.19",
+    "@ai-sdk/openai": "^0.0.24",
     "@astrojs/check": "^0.7.0",
-    "typescript": "^5.4.5"
+    "@astrojs/starlight": "^0.24.0",
+    "ai": "^3.1.30",
+    "astro": "^4.8.6",
+    "dotenv": "^16.4.5",
+    "sharp": "^0.32.5",
+    "tsx": "^4.13.1",
+    "typescript": "^5.4.5",
+    "zod": "^3.23.8"
   }
 }
