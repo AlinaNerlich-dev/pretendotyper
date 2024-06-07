@@ -22,6 +22,7 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "GitHub.vscode-pull-request-github",
+        "unifiedjs.vscode-mdx",
         "vsls-contrib.codetour"
       ],
       "settings": {
