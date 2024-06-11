@@ -8,17 +8,21 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:content": "tsx -r dotenv/config src/scripts/build"
+    "build:content": "tsx -r dotenv/config src/scripts/build",
+    "build:image": "tsx -r dotenv/config src/scripts/image"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^0.0.19",
     "@ai-sdk/openai": "^0.0.24",
     "@astrojs/check": "^0.7.0",
     "@astrojs/starlight": "^0.24.0",
+    "@fal-ai/serverless-client": "^0.10.4",
     "ai": "^3.1.30",
     "astro": "^4.8.6",
     "dotenv": "^16.4.5",
+    "filenamify": "^6.0.0",
     "sharp": "^0.32.5",
+    "slugify": "^1.6.6",
     "tsx": "^4.13.1",
     "typescript": "^5.4.5",
     "zod": "^3.23.8"
