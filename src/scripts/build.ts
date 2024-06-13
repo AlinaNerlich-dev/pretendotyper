@@ -7,8 +7,10 @@ import { generateImage } from "./image";
 import { z } from "zod";
 import filenamify from "filenamify";
 import slugify from "slugify";
+import { generateVoice } from "./voice";
 
 await mkdir("./public/images", { recursive: true });
+await mkdir("./public/audio", { recursive: true });
 
 for (const category of categories) {
   console.log(`generating an product for ${category}`);
@@ -72,11 +74,48 @@ for (const category of categories) {
     temperature: 0.7,
   });
 
+  const radioScript = await generateText({
+    model: anthropic("claude-3-sonnet-20240229"),
+    messages: [
+      {
+        role: "system",
+        content: [
+          "You are a radio script writing expert",
+          "Your task is to write a 30 second radio ad about the product",
+          "Respond only with a text to be read by the radio presentor, dont add any comments or cues",
+        ].join(". "),
+      },
+      {
+        role: "user",
+        content: [
+          {
+            type: "image",
+            image: new URL(imageURL),
+          },
+          {
+            type: "text",
+            text: `Write a radio ad for the following ${result.text}`,
+          },
+        ],
+      },
+    ],
+  });
+
+  const audioFilename = `${slugify(product.object.name)}.mp3`;
+
+  await generateVoice(
+    radioScript.text,
+    `./public/audio/${filenamify(audioFilename)}`
+  );
+
   const articleText = [
     "---",
     `title: ${product.object.name}`,
     "---",
     `![${product.object.name}](/images/${imageFilename})\n`,
+    "<audio controls>",
+    `<source src="/audio/${audioFilename}"/>`,
+    "</audio>",
     result.text,
   ].join("\n");
 
