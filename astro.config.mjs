@@ -5,9 +5,10 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Baby Products',
+			title: 'AI Baby Products',
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/AlinaNerlich-dev/pretendotyper',
+				linkedin: 'https://www.linkedin.com/in/alina-nerlich/'
 			},
 			sidebar: [
 				{
