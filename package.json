@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:content": "tsx -r dotenv/config src/scripts/build",
+    "build:content": "tsx -r dotenv/config src/scripts/build-content",
     "build:image": "tsx -r dotenv/config src/scripts/image"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/starlight": "^0.24.0",
     "@fal-ai/serverless-client": "^0.10.4",
+    "@inquirer/prompts": "^5.0.5",
     "ai": "^3.1.30",
     "astro": "^4.8.6",
     "dotenv": "^16.4.5",
