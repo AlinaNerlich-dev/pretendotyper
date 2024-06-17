@@ -1,18 +1,14 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { generateText, generateObject } from "ai";
+import { generateObject, generateText } from "ai";
+import filenamify from "filenamify";
 import { mkdir, writeFile } from "fs/promises";
 import { join } from "path";
-import { categories } from "./data";
-import { generateImage } from "./image";
-import { z } from "zod";
-import filenamify from "filenamify";
 import slugify from "slugify";
+import { z } from "zod";
+import { generateImage } from "./image";
 import { generateVoice } from "./voice";
 
-await mkdir("./public/images", { recursive: true });
-await mkdir("./public/audio", { recursive: true });
-
-for (const category of categories) {
+export async function generateProduct(category: string) {
   console.log(`generating an product for ${category}`);
 
   const product = await generateObject({
