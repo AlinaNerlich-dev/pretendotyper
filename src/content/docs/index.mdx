@@ -19,23 +19,41 @@ hero:
 
 
 ## About the project
+A demo web application has been developed, specializing in innovative baby products, utilizing state-of-the-art AI models for text, image, and voice generation. The application’s product pages are built using the Astro web framework, which is ideal for creating content-driven websites. The goal of the project was to produce advanced baby products by employing a variety of AI-generated prompts. These prompts are used to generate filenames and frontmatter as well, next to consistency and precision in product descriptions. Additionally, the app leverages AI outputs to create tailored radio advertisements, transforming text and image data into engaging audio content through a specialized radio prompt.
 
-A groundbreaking web app for futuristic baby products has been developed using advanced AI models for text, image, and voice. Product pages are crafted with the Astro web framework, perfect for content-driven sites. The mission was to generate cutting-edge baby products using various prompts, with AI generating filenames and frontmatters. The radio ad, a result of the text and image outputs, is then tailored into compelling content through a radio prompt.
+Additionally, we enhanced interactivity for developers by incorporating the @inquierre/prompts package. This allows developers to select categories for which new products should be created.
+
+**Code Example**
+```typescript
+do {
+  const category = await input({
+    message: "What product category you want to generate for",
+    transformer: (value) => value.toLowerCase().trim(),
+    validate: (value) =>
+      existingCategories.includes(value)
+        ? " Category already exists. Choose another one"
+        : true,
+  });
+  ...
+}
+  ```
+
+
 ### Models used
 
 #### Anthropic (Claude Sonnet)
-We leveraged Anthropic's complimentary credits to utilize the Claude Sonnet model, which offers an excellent blend of performance and speed. Anthropic is instrumental in creating prompts for our Stable Diffusion model to generate images. Additionally, we employ Anthropic to generate product descriptions and radio scripts.
+We used Anthropic’s complimentary credits to work with the Claude Sonnet model, which offers a good balance of performance and speed. Anthropic helps us create prompts for our Stable Diffusion model to generate images. Additionally, we use Anthropic to produce product descriptions and radio scripts.
 
 **Example prompt**
-> The products should be futuristic and environmently friendly",
-Invent a new innovative baby product",
+> The products should be futuristic and environmently friendly
+
 
 #### Stable Diffusion
 This model was used for generating an image by an ai generated prompt of anthropic. We used the `@fal-ai/serverless-client` package.
 
 **Example prompt**
 > You are an expert prompt engineer for Stable Diffusion.
-  Your task is to write a prompt for the product you just invented
+  Your task is to write a prompt for the product you just invented.
 
 **Code Example**
 ```typescript  
@@ -46,15 +64,15 @@ export async function generateImage(prompt: string, fileName: string) {
     },
     logs: true,
   })) as { images: { url: string }[] };
-}
+...
 ```
 
 
 #### Eleven Labs
-ElevenLabs offers us the opportunity to choose a suiting voice which was generating an radio ad for our products.
+ElevenLabs offers us the opportunity to choose a suiting voice which was generating radio ads for our products.
 
 **Example prompt**
-> Respond only with a text to be read by the radio presentor, dont add any comments or cues.
+>  Your task is to write a 30 second radio ad about the product.
 
 **Code Example**
 ```typescript  
@@ -65,5 +83,5 @@ export async function generateVoice(text: string, fileName: string) {
     text,
     model_id: "eleven_multilingual_v2",
   });
-}
+...
 ```
