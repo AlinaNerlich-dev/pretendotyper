@@ -1,36 +1,92 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Showcasing AI Magic. A Demo Portfolio
+
+description: Testing the capabilities of language, image and voice models
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: A Glimpse into AI-Driven Product Imagery and Ads
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/FutureBaby.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: View products
+      link: /products/crawling
       icon: right-arrow
       variant: primary
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Check out the code
+      link: https://github.com/AlinaNerlich-dev/pretendotyper
       icon: external
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Baby products
+## About the project
+A demo web application has been developed, specializing in innovative baby products, utilizing state-of-the-art AI models for text, image, and voice generation. The application’s product pages are built using the Astro web framework, which is ideal for creating content-driven websites. The goal of the project was to produce advanced baby products by employing a variety of AI-generated prompts. These prompts are used to generate filenames and frontmatter as well, next to consistency and precision in product descriptions. Additionally, the app leverages AI outputs to create tailored radio advertisements, transforming text and image data into engaging audio content through a specialized radio prompt.
 
-<CardGrid stagger>
-  <Card title="Update content" icon="pencil">
-    Edit `src/content/docs/index.mdx` to see this page change.
-  </Card>
-  <Card title="Add new content" icon="add-document">
-    Add Markdown or MDX files to `src/content/docs` to create new pages.
-  </Card>
-  <Card title="Configure your site" icon="setting">
-    Edit your `sidebar` and other config in `astro.config.mjs`.
-  </Card>
-  <Card title="Read the docs" icon="open-book">
-    Learn more in [the Starlight Docs](https://starlight.astro.build/).
-  </Card>
-</CardGrid>
+Additionally, we enhanced interactivity for developers by incorporating the `@inquierre/prompts` package. This allows developers to select categories for which new products should be created.
+
+**Code Example**
+```typescript
+do {
+  const category = await input({
+    message: "What product category you want to generate for",
+    transformer: (value) => value.toLowerCase().trim(),
+    validate: (value) =>
+      existingCategories.includes(value)
+        ? " Category already exists. Choose another one"
+        : true,
+  });
+  ...
+}
+  ```
+
+
+### Models used
+
+#### Anthropic (Claude Sonnet)
+We used Anthropic’s complimentary credits to work with the Claude Sonnet model, which offers a good balance of performance and speed. Anthropic helps us create prompts for our Stable Diffusion model to generate images. Additionally, we use Anthropic to produce product descriptions and radio scripts.
+
+**Example prompt**
+> The products should be futuristic and environmently friendly
+
+
+#### Stable Diffusion
+This model was used for generating an image by an ai generated prompt of anthropic. We used the `@fal-ai/serverless-client` package.
+
+**Example prompt**
+> You are an expert prompt engineer for Stable Diffusion.
+  Your task is to write a prompt for the product you just invented.
+
+**Code Example**
+```typescript  
+export async function generateImage(prompt: string, fileName: string) {
+  const result = (await fal.subscribe("fal-ai/fast-sdxl", {
+    input: {
+      prompt,
+    },
+    logs: true,
+  })) as { images: { url: string }[] };
+...
+}
+```
+
+
+#### Eleven Labs
+ElevenLabs offers us the opportunity to choose a suiting voice which was generating radio ads for our products.
+
+**Example prompt**
+>  Your task is to write a 30 second radio ad about the product.
+
+**Code Example**
+```typescript  
+export async function generateVoice(text: string, fileName: string) {
+  const audioStream = await elevenlabs.generate({
+    stream: true,
+    voice: "5x4OabTaxKEADQiUryOC",
+    text,
+    model_id: "eleven_multilingual_v2",
+  });
+}
+...
+```
+
+### Tech Stack
+TypeScript // NodeJS // Astro // Starlight
