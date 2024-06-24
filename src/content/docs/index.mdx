@@ -21,7 +21,7 @@ hero:
 ## About the project
 A demo web application has been developed, specializing in innovative baby products, utilizing state-of-the-art AI models for text, image, and voice generation. The application’s product pages are built using the Astro web framework, which is ideal for creating content-driven websites. The goal of the project was to produce advanced baby products by employing a variety of AI-generated prompts. These prompts are used to generate filenames and frontmatter as well, next to consistency and precision in product descriptions. Additionally, the app leverages AI outputs to create tailored radio advertisements, transforming text and image data into engaging audio content through a specialized radio prompt.
 
-Additionally, we enhanced interactivity for developers by incorporating the @inquierre/prompts package. This allows developers to select categories for which new products should be created.
+Additionally, we enhanced interactivity for developers by incorporating the `@inquierre/prompts` package. This allows developers to select categories for which new products should be created.
 
 **Code Example**
 ```typescript
@@ -65,6 +65,7 @@ export async function generateImage(prompt: string, fileName: string) {
     logs: true,
   })) as { images: { url: string }[] };
 ...
+}
 ```
 
 
@@ -83,5 +84,9 @@ export async function generateVoice(text: string, fileName: string) {
     text,
     model_id: "eleven_multilingual_v2",
   });
+}
 ...
 ```
+
+### Tech Stack
+TypeScript // NodeJS // Astro // Starlight
