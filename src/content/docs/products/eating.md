@@ -1,10 +1,11 @@
 ---
 title: BabyNutriSphere
 ---
-![BabyNutriSphere](/images/BabyNutriSphere.png)
+
+![BabyNutriSphere](/pretendotyper/images/BabyNutriSphere.png)
 
 <audio controls>
-<source src="/audio/BabyNutriSphere.mp3"/>
+<source src="/pretendotyper/audio/BabyNutriSphere.mp3"/>
 </audio>
 # Healthy Living Made Easy
 

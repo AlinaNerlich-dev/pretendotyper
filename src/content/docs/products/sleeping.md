@@ -2,10 +2,10 @@
 title: SomniaCozy
 ---
 
-![SomniaCozy](/images/SomniaCozy.png)
+![SomniaCozy](/pretendotyper/images/SomniaCozy.png)
 
 <audio controls>
-<source src="/audio/SomniaCozy.mp3"/>
+<source src="/pretendotyper/audio/SomniaCozy.mp3"/>
 </audio>
 # Soothing Womb-Like Environment
 

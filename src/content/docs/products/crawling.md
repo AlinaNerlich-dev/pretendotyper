@@ -1,10 +1,11 @@
 ---
 title: EcoGliders
 ---
-![EcoGliders](/images/EcoGliders.png)
+
+![EcoGliders](/pretendotyper/images/EcoGliders.png)
 
 <audio controls>
-<source src="/audio/EcoGliders.mp3"/>
+<source src="/pretendotyper/audio/EcoGliders.mp3"/>
 </audio>
 # Cozy Playtime for Little Ones
 

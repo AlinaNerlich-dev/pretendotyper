@@ -1,10 +1,11 @@
 ---
 title: EcoPaint
 ---
-![EcoPaint](/images/EcoPaint.png)
+
+![EcoPaint](/pretendotyper/images/EcoPaint.png)
 
 <audio controls>
-<source src="/audio/EcoPaint.mp3"/>
+<source src="/pretendotyper/audio/EcoPaint.mp3"/>
 </audio>
 # Unleash Your Child's Creativity with Our Vibrant Art Supplies
 

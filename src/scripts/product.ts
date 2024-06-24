@@ -108,9 +108,9 @@ export async function generateProduct(category: string) {
     "---",
     `title: ${product.object.name}`,
     "---",
-    `![${product.object.name}](/images/${imageFilename})\n`,
+    `![${product.object.name}](/pretendotyper/images/${imageFilename})\n`,
     "<audio controls>",
-    `<source src="/audio/${audioFilename}"/>`,
+    `<source src="/pretendotyper/audio/${audioFilename}"/>`,
     "</audio>",
     result.text,
   ].join("\n");
