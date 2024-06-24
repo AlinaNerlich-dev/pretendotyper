@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://AlinaNerlich-dev.github.io',
+	base: '/pretendotyper',
 	integrations: [
 		starlight({
 			title: 'AI Baby Products',
